@@ -99,7 +99,7 @@ function App() {
   const blockchain = useSelector((state) => state.blockchain);
   const data = useSelector((state) => state.data);
   const [claimingNft, setClaimingNft] = useState(false);
-  const [feedback, setFeedback] = useState(`Click buy to mint your NFT.`);
+  const [feedback, setFeedback] = useState(`點選購買鍵馬上進行購買!`);
   const [mintAmount, setMintAmount] = useState(1);
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
@@ -139,13 +139,13 @@ function App() {
       })
       .once("error", (err) => {
         console.log(err);
-        setFeedback("Sorry, something went wrong please try again later.");
+        setFeedback("出了點問題 重啟試試!");
         setClaimingNft(false);
       })
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          `WOW, the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+          ` 恭喜成為韭菜的一員👩‍🌾${CONFIG.NFT_NAME} ! 趕緊前去OpenSea查看!!!!`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -263,14 +263,14 @@ function App() {
                 <s.TextTitle
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  1 {CONFIG.SYMBOL} costs {CONFIG.DISPLAY_COST}{" "}
+                  1 {"韭寶"} 的費用為 {CONFIG.DISPLAY_COST}{" "}
                   {CONFIG.NETWORK.SYMBOL}.
                 </s.TextTitle>
                 <s.SpacerXSmall />
                 <s.TextDescription
                   style={{ textAlign: "center", color: "var(--accent-text)" }}
                 >
-                  Excluding gas fees.
+                  已包含Gas fee
                 </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
@@ -282,7 +282,7 @@ function App() {
                         color: "var(--accent-text)",
                       }}
                     >
-                      Connect to the {CONFIG.NETWORK.NAME} network
+                      請連接 {CONFIG.NETWORK.NAME} 網路
                     </s.TextDescription>
                     <s.SpacerSmall />
                     <StyledButton
