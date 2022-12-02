@@ -127,7 +127,7 @@ function App() {
     let totalGasLimit = String(gasLimit * mintAmount);
     console.log("Cost: ", totalCostWei);
     console.log("Gas limit: ", totalGasLimit);
-    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setFeedback(` ${CONFIG.NFT_NAME}...`);
     setClaimingNft(true);
     blockchain.smartContract.methods
       .mint(mintAmount)
@@ -145,7 +145,7 @@ function App() {
       .then((receipt) => {
         console.log(receipt);
         setFeedback(
-          ` 恭喜成為韭菜的一員👩‍🌾${CONFIG.NFT_NAME} ! 趕緊前去OpenSea查看!!!!`
+          ` 恭喜成為韭菜的一員👩‍🌾 ! 趕緊前去OpenSea查看!!!!`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
